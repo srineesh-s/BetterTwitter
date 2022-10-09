@@ -18,4 +18,8 @@ class DbService {
       throw FirestoreException();
     }
   }
+
+  Stream realTimeStream({required String collectionName}) {
+    return firestore.collection(collectionName).snapshots();
+  }
 }

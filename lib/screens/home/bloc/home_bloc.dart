@@ -13,8 +13,11 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
     on<HomeStreamEvent>((event, emit) async {
       emit(TweetLoading());
       try {
-        await emit.forEach(homeRepository.usersStream,
-            onData: ((List<UserModel> data) => TweetStream(users: data)));
+        await emit.forEach(homeRepository.videoDataStream,
+            onData: ((List<UserModel> data) {
+          print(data[0].name);
+          return TweetStream(users: data);
+        }));
       } catch (e) {
         emit(TweetError());
       }

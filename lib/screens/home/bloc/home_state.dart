@@ -10,7 +10,7 @@ abstract class HomeState extends Equatable {
 
 class HomeInitial extends HomeState {}
 
-class TweetStream extends HomeState {
+class TweetStream {
   List<UserModel> users;
   TweetStream({
     required this.users,

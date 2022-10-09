@@ -15,7 +15,7 @@ class HomeView extends StatelessWidget {
         onPressed: () {},
         child: const Icon(Icons.add),
       ),
-      body: BlocBuilder<HomeBloc, HomeState>(
+      body: BlocBuilder<HomeBloc, TweetStream>(
         builder: (context, state) {
           if (state is TweetStream) {
             return ListView.builder(

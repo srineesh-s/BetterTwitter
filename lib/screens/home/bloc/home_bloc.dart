@@ -8,19 +8,15 @@ import 'package:bloc_concurrency/bloc_concurrency.dart';
 part 'home_event.dart';
 part 'home_state.dart';
 
-class HomeBloc extends Bloc<HomeEvent, HomeState> {
-  HomeBloc(this.homeRepository) : super(HomeInitial()) {
+class HomeBloc extends Bloc<HomeEvent, TweetStream> {
+  HomeBloc(this.homeRepository) : super(TweetStream(users: [])) {
     on<HomeStreamEvent>((event, emit) async {
-      emit(TweetLoading());
-      try {
-        await emit.forEach(homeRepository.videoDataStream,
-            onData: ((List<UserModel> data) {
-          print(data[0].name);
-          return TweetStream(users: data);
-        }));
-      } catch (e) {
-        emit(TweetError());
-      }
+      // emit(TweetLoading());
+      await emit.forEach(homeRepository.videoDataStream,
+          onData: ((List<UserModel> data) {
+        print(data[0].name);
+        return TweetStream(users: data);
+      }));
     }, transformer: restartable());
   }
 

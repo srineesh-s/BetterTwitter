@@ -10,7 +10,8 @@ class HomeRepository {
   StreamController<List<UserModel>> userStreamController =
       StreamController<List<UserModel>>();
 
-  late Stream<List<UserModel>> videoDataStream = listenToTweetsRealTime();
+  late Stream<List<UserModel>> videoDataStream =
+      listenToTweetsRealTime().asBroadcastStream();
 
   Stream<List<UserModel>> listenToTweetsRealTime() async* {
     var tweetReference =

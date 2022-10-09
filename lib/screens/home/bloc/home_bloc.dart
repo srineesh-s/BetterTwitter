@@ -11,10 +11,8 @@ part 'home_state.dart';
 class HomeBloc extends Bloc<HomeEvent, TweetStream> {
   HomeBloc(this.homeRepository) : super(TweetStream(users: [])) {
     on<HomeStreamEvent>((event, emit) async {
-      // emit(TweetLoading());
       await emit.forEach(homeRepository.videoDataStream,
           onData: ((List<UserModel> data) {
-        print(data[0].name);
         return TweetStream(users: data);
       }));
     }, transformer: restartable());

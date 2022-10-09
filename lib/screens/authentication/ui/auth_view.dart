@@ -32,7 +32,7 @@ class _AuthenticationViewState extends State<AuthenticationView> {
           elevation: 0,
           actions: [
             TextButton(
-                key: Key("switchAuth"),
+                key: const Key("switchAuth"),
                 onPressed: () {
                   setState(() {
                     isSignup = !isSignup;

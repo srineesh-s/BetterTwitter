@@ -2,6 +2,8 @@ import 'package:bettertwitter/config/constants/app_strings.dart';
 import 'package:bettertwitter/config/routing/app_router.dart';
 import 'package:bettertwitter/config/routing/route_names.dart';
 import 'package:bettertwitter/screens/authentication/ui/auth_view.dart';
+import 'package:bettertwitter/screens/home/bloc/home_bloc.dart';
+import 'package:bettertwitter/screens/home/repository/home_rep.dart';
 import 'package:bettertwitter/services/auth_service.dart';
 import 'package:bettertwitter/services/firestore_service.dart';
 import 'package:bettertwitter/widgets/input_field.dart';
@@ -35,6 +37,12 @@ class MyApp extends StatelessWidget {
                 auth: FirebaseAuth.instance,
               ),
               dbService: DbService(firestore: FirebaseFirestore.instance))),
+        ),
+        BlocProvider<HomeBloc>(
+          create: (context) => HomeBloc(HomeRepository())
+            ..add(
+              (HomeStreamEvent()),
+            ),
         ),
       ],
       child: MaterialApp(

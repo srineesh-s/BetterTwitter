@@ -1,11 +1,14 @@
 import 'package:bettertwitter/config/routing/route_names.dart';
 import 'package:bettertwitter/main.dart';
 import 'package:bettertwitter/screens/authentication/ui/auth_view.dart';
+import 'package:bettertwitter/screens/home/bloc/home_bloc.dart';
+import 'package:bettertwitter/screens/home/repository/home_rep.dart';
 import 'package:bettertwitter/screens/home/ui/home_view.dart';
 import 'package:bettertwitter/screens/tweet_detail/ui/tweet_detail_view.dart';
 import 'package:bettertwitter/screens/tweet_manipulation/ui/add_or_edit_tweet.dart';
 import 'package:bettertwitter/screens/user_profile/ui/user_profile_view.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 Route<dynamic> generateRoute(RouteSettings settings) {
   final arguments = settings.arguments;
@@ -14,10 +17,11 @@ Route<dynamic> generateRoute(RouteSettings settings) {
       return MaterialPageRoute(builder: (_) => const AuthenticationView());
     case RouteNames.signup:
       return MaterialPageRoute(builder: (_) => const AuthenticationView());
-    case RouteNames.home:
-      return MaterialPageRoute(builder: (_) => const HomeView());
+
     case RouteNames.tweetDetails:
       return MaterialPageRoute(builder: (_) => const TweetDetailView());
+    case RouteNames.home:
+      return MaterialPageRoute(builder: (_) => const HomeView());
     case RouteNames.manipulateTweet:
       return MaterialPageRoute(builder: (_) => const AddOrEditTweetView());
     case RouteNames.userProfile:

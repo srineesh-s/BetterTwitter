@@ -1,8 +1,8 @@
-# BetterTwitter [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-square)](http://makeapullrequest.com) <a href="https://github.com/Solido/awesome-flutter">
+# BetterTwitter2022 [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-square)](http://makeapullrequest.com) <a href="https://github.com/Solido/awesome-flutter">
 
 A Simple Twitter project with posting,editing and delete functionalites built using flutter and firebase(2022).
 
-#### Demonstrations
+#### App Screenshots
 <div style="text-align: center"><table><tr>
   
    <td style="text-align: center">
@@ -53,3 +53,13 @@ You can also check the code coverage of the project using the below command
 ```
 $ flutter test --coverage
 ```
+
+## Key requirements of the application
+- Type in a tweet with 280 characters limit
+- Save this along with the current time into Firestore
+- View a list of all tweets by all users, sorted by most recent date
+- The app should update in realtime when the data changes on Firestore.
+- Edit a tweet written by the author
+- Delete tweets written by the author
+- Sign-out functionality
+

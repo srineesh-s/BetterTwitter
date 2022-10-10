@@ -1,0 +1,30 @@
+// GENERATED CODE - DO NOT MODIFY BY HAND
+
+part of 'tweet_model.dart';
+
+// **************************************************************************
+// JsonSerializableGenerator
+// **************************************************************************
+
+TweetModel _$TweetModelFromJson(Map<String, dynamic> json) => TweetModel(
+      id: json['id'] as String,
+      userId: json['userId'] as String,
+      tweet: json['tweet'] as String,
+      relatedtweets: (json['relatedtweets'] as List<dynamic>?)
+          ?.map((e) => e as String)
+          .toList(),
+      user: UserModel.fromJson(json['user'] as Map<String, dynamic>),
+      isEdited: json['isEdited'] as bool? ?? false,
+      date: json['date'] as String,
+    );
+
+Map<String, dynamic> _$TweetModelToJson(TweetModel instance) =>
+    <String, dynamic>{
+      'id': instance.id,
+      'userId': instance.userId,
+      'tweet': instance.tweet,
+      'relatedtweets': instance.relatedtweets,
+      'isEdited': instance.isEdited,
+      'date': instance.date,
+      'user': instance.user.toJson(),
+    };

@@ -50,7 +50,11 @@ class HomeView extends StatelessWidget {
         centerTitle: true,
         actions: [
           TextButton(
-              onPressed: () {},
+              onPressed: () {
+                Navigator.of(context).pushNamed(
+                  RouteNames.userTweets,
+                );
+              },
               child: const Text(
                 AppStrings.yourTweets,
                 style: TextStyle(color: Colors.white),
@@ -65,16 +69,16 @@ class HomeView extends StatelessWidget {
       ),
       body: BlocBuilder<HomeBloc, TweetStream>(
         builder: (context, state) {
-          return ListView.builder(
-            itemCount: state.tweets.length,
-            itemBuilder: (context, index) {
-              if (state.tweets.isEmpty) {
-                return const Center(child: Text("No tweets yet"));
-              } else {
-                return tweetWidget(state.tweets[index]);
-              }
-            },
-          );
+          return (state.tweets.isEmpty)
+              ? const Center(
+                  child: Text("No Tweets had been made"),
+                )
+              : ListView.builder(
+                  itemCount: state.tweets.length,
+                  itemBuilder: (context, index) {
+                    return tweetWidget(state.tweets[index]);
+                  },
+                );
         },
       ),
     );
@@ -82,42 +86,46 @@ class HomeView extends StatelessWidget {
 }
 
 Widget tweetWidget(TweetModel tweetModel) {
-  return Container(
-    margin: const EdgeInsets.all(10),
-    child: Row(
-      crossAxisAlignment: CrossAxisAlignment.center,
-      mainAxisAlignment: MainAxisAlignment.start,
-      children: [
-        Image.asset(
-          imgString(
-            tweetModel.user.image,
+  return GestureDetector(
+    onTap: () {},
+    child: Container(
+      margin: const EdgeInsets.all(10),
+      child: Row(
+        crossAxisAlignment: CrossAxisAlignment.center,
+        mainAxisAlignment: MainAxisAlignment.start,
+        children: [
+          Image.asset(
+            imgString(
+              tweetModel.user.image,
+            ),
+            width: 60,
+            height: 60,
           ),
-          width: 60,
-          height: 60,
-        ),
-        const SizedBox(
-          width: 10,
-        ),
-        Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Text(
-              "@${tweetModel.user.name}",
-              style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
-            ),
-            const SizedBox(
-              height: 2,
-            ),
-            Text(tweetModel.date),
-            const SizedBox(
-              height: 5,
-            ),
-            Text(tweetModel.tweet),
-          ],
-        ),
-        const Spacer(),
-        Text(tweetModel.isEdited ? "Edited Tweet" : ""),
-      ],
+          const SizedBox(
+            width: 10,
+          ),
+          Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text(
+                "@${tweetModel.user.name}",
+                style:
+                    const TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
+              ),
+              const SizedBox(
+                height: 2,
+              ),
+              Text(tweetModel.date),
+              const SizedBox(
+                height: 5,
+              ),
+              Text(tweetModel.tweet),
+            ],
+          ),
+          const Spacer(),
+          Text(tweetModel.isEdited ? "Edited Tweet" : ""),
+        ],
+      ),
     ),
   );
 }

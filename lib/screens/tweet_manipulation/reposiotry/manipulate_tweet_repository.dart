@@ -12,8 +12,6 @@ class ManipulateTweetRepository {
 
   Future<void> addTweet(String tweet) async {
     try {
-      print("-----------------");
-      print(authService.userFromFirebaseUser.userId);
       await dbService.addDataToCollection(
         collectionName: CollectionNames.tweets,
         data: TweetModel(

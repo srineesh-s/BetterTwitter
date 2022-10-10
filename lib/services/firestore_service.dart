@@ -22,4 +22,33 @@ class DbService {
   Stream realTimeStream({required String collectionName}) {
     return firestore.collection(collectionName).snapshots();
   }
+
+  Future<QuerySnapshot> getDataFromCollection(
+      {required String collectionName, required userId}) async {
+    try {
+      return await firestore
+          .collection(collectionName)
+          .where("userId", isEqualTo: userId)
+          .get();
+    } catch (e) {
+      log(e.toString());
+      throw FirestoreException();
+    }
+  }
+
+  Future deleteDocument(
+      {required String collectionName, required String tweet}) async {
+    try {
+      var query = await firestore
+          .collection(collectionName)
+          .where("tweet", isEqualTo: tweet)
+          .get();
+      for (var doc in query.docs) {
+        await doc.reference.delete();
+      }
+    } catch (e) {
+      log(e.toString());
+      throw FirestoreException();
+    }
+  }
 }

@@ -12,3 +12,9 @@ class GetUserTweetsEvent extends UserTweetEvent {
 
   const GetUserTweetsEvent({required this.userId});
 }
+
+class DeleteUserTweetEvent extends UserTweetEvent {
+  final TweetModel tweetModel;
+
+  const DeleteUserTweetEvent({required this.tweetModel});
+}

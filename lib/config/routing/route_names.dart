@@ -5,4 +5,5 @@ class RouteNames {
   static const String userProfile = '/userProfile';
   static const String manipulateTweet = '/manipulateTweet';
   static const String tweetDetails = '/tweetDetails';
+  static const String userTweets = '/userTweets';
 }

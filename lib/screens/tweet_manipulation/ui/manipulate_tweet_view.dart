@@ -1,8 +1,6 @@
 import 'package:bettertwitter/config/constants/app_strings.dart';
 import 'package:bettertwitter/models/tweets/tweet_model.dart';
 import 'package:bettertwitter/screens/tweet_manipulation/bloc/manipulate_tweet_bloc.dart';
-import 'package:bettertwitter/services/auth_service.dart';
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 

@@ -54,6 +54,17 @@ class _FakeFirebaseFirestore_2 extends _i1.SmartFake
         );
 }
 
+class _FakeQuerySnapshot_3<T extends Object?> extends _i1.SmartFake
+    implements _i4.QuerySnapshot<T> {
+  _FakeQuerySnapshot_3(
+    Object parent,
+    Invocation parentInvocation,
+  ) : super(
+          parent,
+          parentInvocation,
+        );
+}
+
 /// A class which mocks [AuthService].
 ///
 /// See the documentation for Mockito's code generation for more information.
@@ -186,4 +197,47 @@ class MockDbService extends _i1.Mock implements _i7.DbService {
         ),
         returnValue: _i6.Stream<dynamic>.empty(),
       ) as _i6.Stream<dynamic>);
+  @override
+  _i6.Future<_i4.QuerySnapshot<Object?>> getDataFromCollection({
+    required String? collectionName,
+    required dynamic userId,
+  }) =>
+      (super.noSuchMethod(
+        Invocation.method(
+          #getDataFromCollection,
+          [],
+          {
+            #collectionName: collectionName,
+            #userId: userId,
+          },
+        ),
+        returnValue: _i6.Future<_i4.QuerySnapshot<Object?>>.value(
+            _FakeQuerySnapshot_3<Object?>(
+          this,
+          Invocation.method(
+            #getDataFromCollection,
+            [],
+            {
+              #collectionName: collectionName,
+              #userId: userId,
+            },
+          ),
+        )),
+      ) as _i6.Future<_i4.QuerySnapshot<Object?>>);
+  @override
+  _i6.Future<dynamic> deleteDocument({
+    required String? collectionName,
+    required String? tweet,
+  }) =>
+      (super.noSuchMethod(
+        Invocation.method(
+          #deleteDocument,
+          [],
+          {
+            #collectionName: collectionName,
+            #tweet: tweet,
+          },
+        ),
+        returnValue: _i6.Future<dynamic>.value(),
+      ) as _i6.Future<dynamic>);
 }

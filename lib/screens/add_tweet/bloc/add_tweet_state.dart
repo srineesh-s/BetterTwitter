@@ -7,15 +7,15 @@ abstract class AddTweetState extends Equatable {
   List<Object> get props => [];
 }
 
-class ManipulateTweetInitial extends AddTweetState {}
+class AddTweetInitial extends AddTweetState {}
 
-class ManipulateTweetLoading extends AddTweetState {}
+class AddTweetLoading extends AddTweetState {}
 
-class ManipulateTweetSuccess extends AddTweetState {}
+class AddTweetSuccess extends AddTweetState {}
 
-class ManipulateTweetFailure extends AddTweetState {
+class AddTweetFailure extends AddTweetState {
   final String message;
-  const ManipulateTweetFailure({
+  const AddTweetFailure({
     required this.message,
   });
 }

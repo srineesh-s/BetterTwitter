@@ -7,15 +7,14 @@ part 'add_tweet_event.dart';
 part 'add_tweet_state.dart';
 
 class AddTweetBloc extends Bloc<ManipulateTweetEvent, AddTweetState> {
-  AddTweetBloc(this.manipulateTweetRepository)
-      : super(ManipulateTweetInitial()) {
+  AddTweetBloc(this.manipulateTweetRepository) : super(AddTweetInitial()) {
     on<AddTweetEvent>((event, emit) async {
-      emit(ManipulateTweetLoading());
-      await manipulateTweetRepository.addTweet(event.tweet).then((value) {
-        emit(ManipulateTweetSuccess());
-      }).catchError((error) {
-        emit(ManipulateTweetFailure(message: error.toString()));
-      });
+      emit(AddTweetLoading());
+      try {
+        await manipulateTweetRepository.addTweet(event.tweet);
+      } catch (e) {
+        emit(AddTweetFailure(message: e.toString()));
+      }
     });
   }
 

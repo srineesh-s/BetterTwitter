@@ -333,4 +333,12 @@ class MockAuthRepository extends _i1.Mock implements _i2.AuthRepository {
         ),
         returnValue: _i6.Future<bool>.value(false),
       ) as _i6.Future<bool>);
+  @override
+  _i6.Future<bool> signout() => (super.noSuchMethod(
+        Invocation.method(
+          #signout,
+          [],
+        ),
+        returnValue: _i6.Future<bool>.value(false),
+      ) as _i6.Future<bool>);
 }

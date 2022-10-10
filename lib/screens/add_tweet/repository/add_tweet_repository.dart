@@ -16,8 +16,8 @@ class AddTweetRepository {
         data: TweetModel(
           id: "id",
           date: DateTime.now().toString(),
-          user: authService.userFromFirebaseUser,
           userId: authService.userFromFirebaseUser.userId,
+          user: authService.userFromFirebaseUser,
           tweet: tweet,
         ).toJson(),
       );

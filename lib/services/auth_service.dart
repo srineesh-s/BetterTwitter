@@ -20,16 +20,11 @@ class AuthService {
   });
 
   // create user obj based on FirebaseUser
-  // User? _userFromFirebaseUser(User? user) {
-  //   return user != null ? User(uid: user.uid) : null;
-  // }
   UserModel get userFromFirebaseUser => _userFromFirebaseUser();
   UserModel _userFromFirebaseUser() {
     var user = auth.currentUser;
-    print(user!.uid);
-    print(user.displayName);
     return UserModel(
-      email: user.email ?? "",
+      email: user!.email ?? "",
       name: user.displayName ?? "",
       image: user.photoURL ?? "photo url",
       userId: user.uid,
@@ -49,12 +44,6 @@ class AuthService {
       dev.log(e.toString());
       throw AuthException("Authentication failed");
     }
-  }
-
-  Future<bool> isUserLoggedIn() async {
-    var user = auth.currentUser;
-    _userFromFirebaseUser();
-    return user != null;
   }
 
   Future<User?> signUpWithEmailAndPassword(
@@ -80,7 +69,6 @@ class AuthService {
     try {
       return await auth.signOut();
     } catch (e) {
-      print(e.toString());
       return null;
     }
   }

@@ -20,8 +20,7 @@ class UserTweetBloc extends Bloc<UserTweetEvent, UserTweetState> {
     on<DeleteUserTweetEvent>((event, emit) async {
       emit(UserTweetLoading());
       try {
-        final bool tweets =
-            await userTweetRepository.deleteUserTweet(event.tweetModel);
+        await userTweetRepository.deleteUserTweet(event.tweetModel);
         emit(DeleteTweetSuccess());
       } catch (e) {
         emit(UserTweetFailure(e.toString()));

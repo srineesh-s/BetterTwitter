@@ -20,19 +20,14 @@ class AuthenticationBloc
     on<SignupEvent>((event, emit) async {
       emit(AuthenticationLoading());
       try {
-        try {
-          await authRepository.signup(event.email, event.password, event.name);
-          emit(AuthenticationSuccess());
-        } catch (e) {
-          emit(AuthenticationFailure(e.toString()));
-        }
+        await authRepository.signup(event.email, event.password, event.name);
+        emit(AuthenticationSuccess());
       } catch (e) {
         emit(AuthenticationFailure(e.toString()));
       }
     });
     on<SignoutEvent>((event, emit) async {
       emit(AuthenticationLoading());
-      print("Sign out called");
       await authRepository.signout();
       emit(SignoutSuccess());
     });

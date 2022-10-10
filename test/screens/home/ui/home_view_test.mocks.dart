@@ -363,6 +363,54 @@ class MockHomeBloc extends _i1.Mock implements _i5.HomeBloc {
       );
 }
 
+/// A class which mocks [AuthenticationInitial].
+///
+/// See the documentation for Mockito's code generation for more information.
+class MockAuthenticationInitial extends _i1.Mock
+    implements _i3.AuthenticationInitial {
+  MockAuthenticationInitial() {
+    _i1.throwOnMissingStub(this);
+  }
+
+  @override
+  List<Object> get props => (super.noSuchMethod(
+        Invocation.getter(#props),
+        returnValue: <Object>[],
+      ) as List<Object>);
+}
+
+/// A class which mocks [AuthenticationLoading].
+///
+/// See the documentation for Mockito's code generation for more information.
+class MockAuthenticationLoading extends _i1.Mock
+    implements _i3.AuthenticationLoading {
+  MockAuthenticationLoading() {
+    _i1.throwOnMissingStub(this);
+  }
+
+  @override
+  List<Object> get props => (super.noSuchMethod(
+        Invocation.getter(#props),
+        returnValue: <Object>[],
+      ) as List<Object>);
+}
+
+/// A class which mocks [AuthenticationSuccess].
+///
+/// See the documentation for Mockito's code generation for more information.
+class MockAuthenticationSuccess extends _i1.Mock
+    implements _i3.AuthenticationSuccess {
+  MockAuthenticationSuccess() {
+    _i1.throwOnMissingStub(this);
+  }
+
+  @override
+  List<Object> get props => (super.noSuchMethod(
+        Invocation.getter(#props),
+        returnValue: <Object>[],
+      ) as List<Object>);
+}
+
 /// A class which mocks [TweetStream].
 ///
 /// See the documentation for Mockito's code generation for more information.

@@ -32,18 +32,24 @@ void main() {
     });
     test("checking Sign up function", () async {
       when(mockAuthService.signUpWithEmailAndPassword(
-              'email', 'password', "uid"))
+              'email', 'password', "name"))
           .thenAnswer((realInvocation) async => null);
       when(mockDbService.addDataToCollection(
               collectionName: 'users',
               data: UserModel(
                 name: "name",
                 email: "email",
-                userId: "uid",
+                userId: "",
                 image: 1.toString(),
               ).toJson()))
           .thenAnswer((realInvocation) async => true);
-      final result = await sut.signup("email", "password", "name");
+      final result = await sut.signup('email', 'password', "name");
+      expect(result, true);
+    });
+    test("checking Sign out function", () async {
+      when(mockAuthService.signOut())
+          .thenAnswer((realInvocation) async => true);
+      final result = await sut.signout();
       expect(result, true);
     });
   });

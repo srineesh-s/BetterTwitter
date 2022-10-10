@@ -198,11 +198,6 @@ class MockAddTweetEvent extends _i1.Mock implements _i3.AddTweetEvent {
         Invocation.getter(#tweet),
         returnValue: '',
       ) as String);
-  @override
-  List<Object> get props => (super.noSuchMethod(
-        Invocation.getter(#props),
-        returnValue: <Object>[],
-      ) as List<Object>);
 }
 
 /// A class which mocks [AddTweetState].

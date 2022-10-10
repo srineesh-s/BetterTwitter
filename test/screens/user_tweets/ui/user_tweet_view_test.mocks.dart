@@ -5,6 +5,7 @@
 // ignore_for_file: no_leading_underscores_for_library_prefixes
 import 'dart:async' as _i4;
 
+import 'package:bettertwitter/models/tweets/tweet_model.dart' as _i6;
 import 'package:bettertwitter/screens/user_tweets/bloc/user_tweet_bloc.dart'
     as _i3;
 import 'package:bettertwitter/screens/user_tweets/repository/user_tweet_rep.dart'
@@ -243,6 +244,41 @@ class MockUserTweetLoading extends _i1.Mock implements _i3.UserTweetLoading {
     _i1.throwOnMissingStub(this);
   }
 
+  @override
+  List<Object> get props => (super.noSuchMethod(
+        Invocation.getter(#props),
+        returnValue: <Object>[],
+      ) as List<Object>);
+}
+
+/// A class which mocks [UserTweetInitial].
+///
+/// See the documentation for Mockito's code generation for more information.
+class MockUserTweetInitial extends _i1.Mock implements _i3.UserTweetInitial {
+  MockUserTweetInitial() {
+    _i1.throwOnMissingStub(this);
+  }
+
+  @override
+  List<Object> get props => (super.noSuchMethod(
+        Invocation.getter(#props),
+        returnValue: <Object>[],
+      ) as List<Object>);
+}
+
+/// A class which mocks [UserTweetSuccess].
+///
+/// See the documentation for Mockito's code generation for more information.
+class MockUserTweetSuccess extends _i1.Mock implements _i3.UserTweetSuccess {
+  MockUserTweetSuccess() {
+    _i1.throwOnMissingStub(this);
+  }
+
+  @override
+  List<_i6.TweetModel> get tweets => (super.noSuchMethod(
+        Invocation.getter(#tweets),
+        returnValue: <_i6.TweetModel>[],
+      ) as List<_i6.TweetModel>);
   @override
   List<Object> get props => (super.noSuchMethod(
         Invocation.getter(#props),

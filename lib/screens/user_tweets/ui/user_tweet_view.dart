@@ -20,7 +20,7 @@ class _UserTweetViewState extends State<UserTweetView> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text(AppStrings.appName),
+        title: const Text(AppStrings.yourTweets),
         centerTitle: true,
       ),
       body: BlocConsumer<UserTweetBloc, UserTweetState>(
@@ -34,8 +34,8 @@ class _UserTweetViewState extends State<UserTweetView> {
           }
           if (state is DeleteTweetSuccess) {
             ScaffoldMessenger.of(context).showSnackBar(
-              SnackBar(
-                content: const Text('Tweet Deleted'),
+              const SnackBar(
+                content: Text('Tweet Deleted'),
               ),
             );
             Navigator.of(context).pop();
@@ -53,20 +53,26 @@ class _UserTweetViewState extends State<UserTweetView> {
                   )
                 : ListView.builder(
                     itemCount: state.tweets.length,
+                    padding: const EdgeInsets.only(top: 20, bottom: 20),
                     itemBuilder: (context, index) {
-                      return ListTile(
-                        title: Text(state.tweets[index].tweet),
-                        subtitle:
-                            Text(state.tweets[index].date.substring(0, 10)),
-                        trailing: IconButton(
-                          onPressed: () {
-                            context.read<UserTweetBloc>().add(
-                                  DeleteUserTweetEvent(
-                                    tweetModel: state.tweets[index],
-                                  ),
-                                );
-                          },
-                          icon: const Icon(Icons.delete),
+                      return Container(
+                        margin:
+                            const EdgeInsets.only(bottom: 5, left: 5, right: 5),
+                        color: Colors.grey[300],
+                        child: ListTile(
+                          title: Text(state.tweets[index].tweet),
+                          subtitle:
+                              Text(state.tweets[index].date.substring(0, 10)),
+                          trailing: IconButton(
+                            onPressed: () {
+                              context.read<UserTweetBloc>().add(
+                                    DeleteUserTweetEvent(
+                                      tweetModel: state.tweets[index],
+                                    ),
+                                  );
+                            },
+                            icon: const Icon(Icons.delete),
+                          ),
                         ),
                       );
                     });

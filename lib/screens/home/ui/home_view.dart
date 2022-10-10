@@ -15,20 +15,9 @@ class HomeView extends StatelessWidget {
     return Scaffold(
       drawer: Drawer(
         child: Column(
+          crossAxisAlignment: CrossAxisAlignment.center,
+          mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            const SizedBox(
-              width: double.infinity,
-              child: DrawerHeader(
-                decoration: BoxDecoration(
-                  color: Colors.blue,
-                ),
-                child: Text('Drawer Header'),
-              ),
-            ),
-            ListTile(
-              title: const Text('Item 1'),
-              onTap: () {},
-            ),
             BlocListener<AuthenticationBloc, AuthenticationState>(
               listener: (context, state) {
                 if (state is SignoutSuccess) {
@@ -36,7 +25,7 @@ class HomeView extends StatelessWidget {
                 }
               },
               child: ListTile(
-                title: const Text('Sign Out'),
+                title: const Text(AppStrings.signout),
                 onTap: () {
                   context.read<AuthenticationBloc>().add(SignoutEvent());
                 },

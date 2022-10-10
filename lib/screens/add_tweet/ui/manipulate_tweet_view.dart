@@ -1,11 +1,11 @@
 import 'package:bettertwitter/config/constants/app_strings.dart';
-import 'package:bettertwitter/screens/tweet_manipulation/bloc/manipulate_tweet_bloc.dart';
+import 'package:bettertwitter/screens/add_tweet/bloc/add_tweet_bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-class ManipulateTweetView extends StatelessWidget {
-  ManipulateTweetView({super.key});
+class AddTweetView extends StatelessWidget {
+  AddTweetView({super.key});
 
   TextEditingController tweetController = TextEditingController();
   @override
@@ -14,7 +14,7 @@ class ManipulateTweetView extends StatelessWidget {
       appBar: AppBar(
         title: const Text(AppStrings.addTweet),
       ),
-      body: BlocConsumer<ManipulateTweetBloc, ManipulateTweetState>(
+      body: BlocConsumer<AddTweetBloc, AddTweetState>(
         listener: (context, state) {
           if (state is ManipulateTweetSuccess) {
             tweetController.clear();
@@ -51,7 +51,7 @@ class ManipulateTweetView extends StatelessWidget {
                   : TextButton(
                       onPressed: () async {
                         context
-                            .read<ManipulateTweetBloc>()
+                            .read<AddTweetBloc>()
                             .add(AddTweetEvent(tweet: tweetController.text));
                       },
                       child: const Text("Submit Tweet"))

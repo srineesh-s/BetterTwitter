@@ -3,12 +3,13 @@
 // Do not manually edit this file.
 
 // ignore_for_file: no_leading_underscores_for_library_prefixes
-import 'dart:async' as _i5;
+import 'dart:async' as _i6;
 
+import 'package:bettertwitter/models/user/user_model.dart' as _i3;
 import 'package:bettertwitter/screens/authentication/repository/auth_repository.dart'
-    as _i6;
-import 'package:bettertwitter/services/auth_service.dart' as _i3;
-import 'package:bettertwitter/services/firestore_service.dart' as _i4;
+    as _i7;
+import 'package:bettertwitter/services/auth_service.dart' as _i4;
+import 'package:bettertwitter/services/firestore_service.dart' as _i5;
 import 'package:firebase_auth/firebase_auth.dart' as _i2;
 import 'package:mockito/mockito.dart' as _i1;
 
@@ -33,8 +34,8 @@ class _FakeFirebaseAuth_0 extends _i1.SmartFake implements _i2.FirebaseAuth {
         );
 }
 
-class _FakeAuthService_1 extends _i1.SmartFake implements _i3.AuthService {
-  _FakeAuthService_1(
+class _FakeUserModel_1 extends _i1.SmartFake implements _i3.UserModel {
+  _FakeUserModel_1(
     Object parent,
     Invocation parentInvocation,
   ) : super(
@@ -43,8 +44,18 @@ class _FakeAuthService_1 extends _i1.SmartFake implements _i3.AuthService {
         );
 }
 
-class _FakeDbService_2 extends _i1.SmartFake implements _i4.DbService {
-  _FakeDbService_2(
+class _FakeAuthService_2 extends _i1.SmartFake implements _i4.AuthService {
+  _FakeAuthService_2(
+    Object parent,
+    Invocation parentInvocation,
+  ) : super(
+          parent,
+          parentInvocation,
+        );
+}
+
+class _FakeDbService_3 extends _i1.SmartFake implements _i5.DbService {
+  _FakeDbService_3(
     Object parent,
     Invocation parentInvocation,
   ) : super(
@@ -56,7 +67,7 @@ class _FakeDbService_2 extends _i1.SmartFake implements _i4.DbService {
 /// A class which mocks [AuthService].
 ///
 /// See the documentation for Mockito's code generation for more information.
-class MockAuthService extends _i1.Mock implements _i3.AuthService {
+class MockAuthService extends _i1.Mock implements _i4.AuthService {
   MockAuthService() {
     _i1.throwOnMissingStub(this);
   }
@@ -78,7 +89,15 @@ class MockAuthService extends _i1.Mock implements _i3.AuthService {
         returnValueForMissingStub: null,
       );
   @override
-  _i5.Future<_i2.User?> signInWithEmailAndPassword(
+  _i3.UserModel get userFromFirebaseUser => (super.noSuchMethod(
+        Invocation.getter(#userFromFirebaseUser),
+        returnValue: _FakeUserModel_1(
+          this,
+          Invocation.getter(#userFromFirebaseUser),
+        ),
+      ) as _i3.UserModel);
+  @override
+  _i6.Future<_i2.User?> signInWithEmailAndPassword(
     String? email,
     String? password,
   ) =>
@@ -90,12 +109,21 @@ class MockAuthService extends _i1.Mock implements _i3.AuthService {
             password,
           ],
         ),
-        returnValue: _i5.Future<_i2.User?>.value(),
-      ) as _i5.Future<_i2.User?>);
+        returnValue: _i6.Future<_i2.User?>.value(),
+      ) as _i6.Future<_i2.User?>);
   @override
-  _i5.Future<_i2.User?> signUpWithEmailAndPassword(
+  _i6.Future<bool> isUserLoggedIn() => (super.noSuchMethod(
+        Invocation.method(
+          #isUserLoggedIn,
+          [],
+        ),
+        returnValue: _i6.Future<bool>.value(false),
+      ) as _i6.Future<bool>);
+  @override
+  _i6.Future<_i2.User?> signUpWithEmailAndPassword(
     String? email,
     String? password,
+    String? userName,
   ) =>
       (super.noSuchMethod(
         Invocation.method(
@@ -103,38 +131,39 @@ class MockAuthService extends _i1.Mock implements _i3.AuthService {
           [
             email,
             password,
+            userName,
           ],
         ),
-        returnValue: _i5.Future<_i2.User?>.value(),
-      ) as _i5.Future<_i2.User?>);
+        returnValue: _i6.Future<_i2.User?>.value(),
+      ) as _i6.Future<_i2.User?>);
   @override
-  _i5.Future<dynamic> signOut() => (super.noSuchMethod(
+  _i6.Future<dynamic> signOut() => (super.noSuchMethod(
         Invocation.method(
           #signOut,
           [],
         ),
-        returnValue: _i5.Future<dynamic>.value(),
-      ) as _i5.Future<dynamic>);
+        returnValue: _i6.Future<dynamic>.value(),
+      ) as _i6.Future<dynamic>);
 }
 
 /// A class which mocks [AuthRepository].
 ///
 /// See the documentation for Mockito's code generation for more information.
-class MockAuthRepository extends _i1.Mock implements _i6.AuthRepository {
+class MockAuthRepository extends _i1.Mock implements _i7.AuthRepository {
   MockAuthRepository() {
     _i1.throwOnMissingStub(this);
   }
 
   @override
-  _i3.AuthService get authService => (super.noSuchMethod(
+  _i4.AuthService get authService => (super.noSuchMethod(
         Invocation.getter(#authService),
-        returnValue: _FakeAuthService_1(
+        returnValue: _FakeAuthService_2(
           this,
           Invocation.getter(#authService),
         ),
-      ) as _i3.AuthService);
+      ) as _i4.AuthService);
   @override
-  set authService(_i3.AuthService? _authService) => super.noSuchMethod(
+  set authService(_i4.AuthService? _authService) => super.noSuchMethod(
         Invocation.setter(
           #authService,
           _authService,
@@ -142,15 +171,15 @@ class MockAuthRepository extends _i1.Mock implements _i6.AuthRepository {
         returnValueForMissingStub: null,
       );
   @override
-  _i4.DbService get dbService => (super.noSuchMethod(
+  _i5.DbService get dbService => (super.noSuchMethod(
         Invocation.getter(#dbService),
-        returnValue: _FakeDbService_2(
+        returnValue: _FakeDbService_3(
           this,
           Invocation.getter(#dbService),
         ),
-      ) as _i4.DbService);
+      ) as _i5.DbService);
   @override
-  set dbService(_i4.DbService? _dbService) => super.noSuchMethod(
+  set dbService(_i5.DbService? _dbService) => super.noSuchMethod(
         Invocation.setter(
           #dbService,
           _dbService,
@@ -158,7 +187,7 @@ class MockAuthRepository extends _i1.Mock implements _i6.AuthRepository {
         returnValueForMissingStub: null,
       );
   @override
-  _i5.Future<bool> login(
+  _i6.Future<bool> login(
     String? email,
     String? password,
   ) =>
@@ -170,10 +199,10 @@ class MockAuthRepository extends _i1.Mock implements _i6.AuthRepository {
             password,
           ],
         ),
-        returnValue: _i5.Future<bool>.value(false),
-      ) as _i5.Future<bool>);
+        returnValue: _i6.Future<bool>.value(false),
+      ) as _i6.Future<bool>);
   @override
-  _i5.Future<bool> signup(
+  _i6.Future<bool> signup(
     String? email,
     String? password,
     String? name,
@@ -187,6 +216,6 @@ class MockAuthRepository extends _i1.Mock implements _i6.AuthRepository {
             name,
           ],
         ),
-        returnValue: _i5.Future<bool>.value(false),
-      ) as _i5.Future<bool>);
+        returnValue: _i6.Future<bool>.value(false),
+      ) as _i6.Future<bool>);
 }

@@ -3,11 +3,12 @@
 // Do not manually edit this file.
 
 // ignore_for_file: no_leading_underscores_for_library_prefixes
-import 'dart:async' as _i5;
+import 'dart:async' as _i6;
 
-import 'package:bettertwitter/services/auth_service.dart' as _i4;
-import 'package:bettertwitter/services/firestore_service.dart' as _i6;
-import 'package:cloud_firestore/cloud_firestore.dart' as _i3;
+import 'package:bettertwitter/models/user/user_model.dart' as _i3;
+import 'package:bettertwitter/services/auth_service.dart' as _i5;
+import 'package:bettertwitter/services/firestore_service.dart' as _i7;
+import 'package:cloud_firestore/cloud_firestore.dart' as _i4;
 import 'package:firebase_auth/firebase_auth.dart' as _i2;
 import 'package:mockito/mockito.dart' as _i1;
 
@@ -32,9 +33,19 @@ class _FakeFirebaseAuth_0 extends _i1.SmartFake implements _i2.FirebaseAuth {
         );
 }
 
-class _FakeFirebaseFirestore_1 extends _i1.SmartFake
-    implements _i3.FirebaseFirestore {
-  _FakeFirebaseFirestore_1(
+class _FakeUserModel_1 extends _i1.SmartFake implements _i3.UserModel {
+  _FakeUserModel_1(
+    Object parent,
+    Invocation parentInvocation,
+  ) : super(
+          parent,
+          parentInvocation,
+        );
+}
+
+class _FakeFirebaseFirestore_2 extends _i1.SmartFake
+    implements _i4.FirebaseFirestore {
+  _FakeFirebaseFirestore_2(
     Object parent,
     Invocation parentInvocation,
   ) : super(
@@ -46,7 +57,7 @@ class _FakeFirebaseFirestore_1 extends _i1.SmartFake
 /// A class which mocks [AuthService].
 ///
 /// See the documentation for Mockito's code generation for more information.
-class MockAuthService extends _i1.Mock implements _i4.AuthService {
+class MockAuthService extends _i1.Mock implements _i5.AuthService {
   MockAuthService() {
     _i1.throwOnMissingStub(this);
   }
@@ -68,7 +79,15 @@ class MockAuthService extends _i1.Mock implements _i4.AuthService {
         returnValueForMissingStub: null,
       );
   @override
-  _i5.Future<_i2.User?> signInWithEmailAndPassword(
+  _i3.UserModel get userFromFirebaseUser => (super.noSuchMethod(
+        Invocation.getter(#userFromFirebaseUser),
+        returnValue: _FakeUserModel_1(
+          this,
+          Invocation.getter(#userFromFirebaseUser),
+        ),
+      ) as _i3.UserModel);
+  @override
+  _i6.Future<_i2.User?> signInWithEmailAndPassword(
     String? email,
     String? password,
   ) =>
@@ -80,12 +99,21 @@ class MockAuthService extends _i1.Mock implements _i4.AuthService {
             password,
           ],
         ),
-        returnValue: _i5.Future<_i2.User?>.value(),
-      ) as _i5.Future<_i2.User?>);
+        returnValue: _i6.Future<_i2.User?>.value(),
+      ) as _i6.Future<_i2.User?>);
   @override
-  _i5.Future<_i2.User?> signUpWithEmailAndPassword(
+  _i6.Future<bool> isUserLoggedIn() => (super.noSuchMethod(
+        Invocation.method(
+          #isUserLoggedIn,
+          [],
+        ),
+        returnValue: _i6.Future<bool>.value(false),
+      ) as _i6.Future<bool>);
+  @override
+  _i6.Future<_i2.User?> signUpWithEmailAndPassword(
     String? email,
     String? password,
+    String? userName,
   ) =>
       (super.noSuchMethod(
         Invocation.method(
@@ -93,38 +121,39 @@ class MockAuthService extends _i1.Mock implements _i4.AuthService {
           [
             email,
             password,
+            userName,
           ],
         ),
-        returnValue: _i5.Future<_i2.User?>.value(),
-      ) as _i5.Future<_i2.User?>);
+        returnValue: _i6.Future<_i2.User?>.value(),
+      ) as _i6.Future<_i2.User?>);
   @override
-  _i5.Future<dynamic> signOut() => (super.noSuchMethod(
+  _i6.Future<dynamic> signOut() => (super.noSuchMethod(
         Invocation.method(
           #signOut,
           [],
         ),
-        returnValue: _i5.Future<dynamic>.value(),
-      ) as _i5.Future<dynamic>);
+        returnValue: _i6.Future<dynamic>.value(),
+      ) as _i6.Future<dynamic>);
 }
 
 /// A class which mocks [DbService].
 ///
 /// See the documentation for Mockito's code generation for more information.
-class MockDbService extends _i1.Mock implements _i6.DbService {
+class MockDbService extends _i1.Mock implements _i7.DbService {
   MockDbService() {
     _i1.throwOnMissingStub(this);
   }
 
   @override
-  _i3.FirebaseFirestore get firestore => (super.noSuchMethod(
+  _i4.FirebaseFirestore get firestore => (super.noSuchMethod(
         Invocation.getter(#firestore),
-        returnValue: _FakeFirebaseFirestore_1(
+        returnValue: _FakeFirebaseFirestore_2(
           this,
           Invocation.getter(#firestore),
         ),
-      ) as _i3.FirebaseFirestore);
+      ) as _i4.FirebaseFirestore);
   @override
-  set firestore(_i3.FirebaseFirestore? _firestore) => super.noSuchMethod(
+  set firestore(_i4.FirebaseFirestore? _firestore) => super.noSuchMethod(
         Invocation.setter(
           #firestore,
           _firestore,
@@ -132,7 +161,7 @@ class MockDbService extends _i1.Mock implements _i6.DbService {
         returnValueForMissingStub: null,
       );
   @override
-  _i5.Future<bool> addDataToCollection({
+  _i6.Future<bool> addDataToCollection({
     required String? collectionName,
     required Map<String, dynamic>? data,
   }) =>
@@ -145,6 +174,16 @@ class MockDbService extends _i1.Mock implements _i6.DbService {
             #data: data,
           },
         ),
-        returnValue: _i5.Future<bool>.value(false),
-      ) as _i5.Future<bool>);
+        returnValue: _i6.Future<bool>.value(false),
+      ) as _i6.Future<bool>);
+  @override
+  _i6.Stream<dynamic> realTimeStream({required String? collectionName}) =>
+      (super.noSuchMethod(
+        Invocation.method(
+          #realTimeStream,
+          [],
+          {#collectionName: collectionName},
+        ),
+        returnValue: _i6.Stream<dynamic>.empty(),
+      ) as _i6.Stream<dynamic>);
 }

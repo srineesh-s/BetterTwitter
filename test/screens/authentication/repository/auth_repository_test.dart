@@ -31,14 +31,15 @@ void main() {
       expect(result, true);
     });
     test("checking Sign up function", () async {
-      when(mockAuthService.signUpWithEmailAndPassword('email', 'password'))
+      when(mockAuthService.signUpWithEmailAndPassword(
+              'email', 'password', "uid"))
           .thenAnswer((realInvocation) async => null);
       when(mockDbService.addDataToCollection(
               collectionName: 'users',
               data: UserModel(
                 name: "name",
                 email: "email",
-                password: "password",
+                userId: "uid",
                 image: 1.toString(),
               ).toJson()))
           .thenAnswer((realInvocation) async => true);

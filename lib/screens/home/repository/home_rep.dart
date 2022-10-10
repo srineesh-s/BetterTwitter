@@ -14,7 +14,6 @@ class HomeRepository {
   Stream<List<UserModel>> listenToTweetsRealTime() async* {
     var tweetReference =
         FirebaseFirestore.instance.collection(CollectionNames.users);
-
     tweetReference.snapshots().listen((QuerySnapshot tweetsSnapshot) {
       List<UserModel> order =
           tweetsSnapshot.docs.map((DocumentSnapshot snapshot) {
@@ -23,6 +22,6 @@ class HomeRepository {
       userStreamController.add(order);
       videoDataStream.asyncMap((event) => order);
     });
-    // yield* userStreamController.stream;
+    yield* userStreamController.stream;
   }
 }

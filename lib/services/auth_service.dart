@@ -23,6 +23,18 @@ class AuthService {
   // User? _userFromFirebaseUser(User? user) {
   //   return user != null ? User(uid: user.uid) : null;
   // }
+  UserModel get userFromFirebaseUser => _userFromFirebaseUser();
+  UserModel _userFromFirebaseUser() {
+    var user = auth.currentUser;
+    print(user!.uid);
+    print(user.displayName);
+    return UserModel(
+      email: user.email ?? "",
+      name: user.displayName ?? "",
+      image: user.photoURL ?? "photo url",
+      userId: user.uid,
+    );
+  }
 
   // sign in with email & password
   Future<User?> signInWithEmailAndPassword(
@@ -30,8 +42,8 @@ class AuthService {
     try {
       UserCredential result = await auth.signInWithEmailAndPassword(
           email: email, password: password);
-
       User? user = result.user;
+      _userFromFirebaseUser();
       return user;
     } catch (e) {
       dev.log(e.toString());
@@ -39,15 +51,23 @@ class AuthService {
     }
   }
 
+  Future<bool> isUserLoggedIn() async {
+    var user = auth.currentUser;
+    _userFromFirebaseUser();
+    return user != null;
+  }
+
   Future<User?> signUpWithEmailAndPassword(
-    String email,
-    String password,
-  ) async {
+      String email, String password, String userName) async {
     try {
       UserCredential result = await auth.createUserWithEmailAndPassword(
-          email: email, password: password);
+        email: email,
+        password: password,
+      );
       User? user = result.user;
-
+      user!.updateDisplayName(userName);
+      user.updatePhotoURL(1.toString());
+      _userFromFirebaseUser();
       return user;
     } catch (e) {
       dev.log(e.toString());

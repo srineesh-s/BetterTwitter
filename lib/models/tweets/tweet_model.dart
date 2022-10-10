@@ -1,17 +1,24 @@
+import 'package:bettertwitter/models/user/user_model.dart';
 import 'package:json_annotation/json_annotation.dart';
 part 'tweet_model.g.dart';
 
-@JsonSerializable()
+@JsonSerializable(explicitToJson: true)
 class TweetModel {
   String id;
   String userId;
-  String text;
+  String tweet;
+  List<String>? relatedtweets;
+  bool isEdited;
   String date;
+  UserModel user;
 
   TweetModel({
     required this.id,
     required this.userId,
-    required this.text,
+    required this.tweet,
+    this.relatedtweets,
+    required this.user,
+    this.isEdited = false,
     required this.date,
   });
 

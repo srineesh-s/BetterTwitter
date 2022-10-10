@@ -1,4 +1,4 @@
-# BetterTwitter2022 [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-square)](http://makeapullrequest.com) <a href="https://github.com/Solido/awesome-flutter">
+# BetterTwitter 2022 [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-square)](http://makeapullrequest.com) <a href="https://github.com/Solido/awesome-flutter">
 
 A Simple Twitter project with posting,editing and delete functionalites built using flutter and firebase(2022).
 

@@ -4,16 +4,13 @@ import 'package:bettertwitter/models/tweets/tweet_model.dart';
 import 'package:bettertwitter/services/auth_service.dart';
 import 'package:bettertwitter/services/firestore_service.dart';
 
-class ManipulateTweetRepository {
+class AddTweetRepository {
   DbService dbService;
   AuthService authService;
-  ManipulateTweetRepository(
-      {required this.dbService, required this.authService});
+  AddTweetRepository({required this.dbService, required this.authService});
 
   Future<void> addTweet(String tweet) async {
     try {
-      print("-----------------");
-      print(authService.userFromFirebaseUser.userId);
       await dbService.addDataToCollection(
         collectionName: CollectionNames.tweets,
         data: TweetModel(

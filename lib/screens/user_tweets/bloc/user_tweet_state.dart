@@ -22,3 +22,7 @@ class UserTweetFailure extends UserTweetState {
 
   const UserTweetFailure(this.message);
 }
+
+class DeleteTweetSuccess extends UserTweetState {
+  const DeleteTweetSuccess();
+}

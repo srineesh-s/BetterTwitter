@@ -1,14 +1,13 @@
 import 'package:bettertwitter/models/tweets/tweet_model.dart';
-import 'package:bettertwitter/screens/tweet_manipulation/reposiotry/manipulate_tweet_repository.dart';
+import 'package:bettertwitter/screens/add_tweet/repository/add_tweet_repository.dart';
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
 
-part 'manipulate_tweet_event.dart';
-part 'manipulate_tweet_state.dart';
+part 'add_tweet_event.dart';
+part 'add_tweet_state.dart';
 
-class ManipulateTweetBloc
-    extends Bloc<ManipulateTweetEvent, ManipulateTweetState> {
-  ManipulateTweetBloc(this.manipulateTweetRepository)
+class AddTweetBloc extends Bloc<ManipulateTweetEvent, AddTweetState> {
+  AddTweetBloc(this.manipulateTweetRepository)
       : super(ManipulateTweetInitial()) {
     on<AddTweetEvent>((event, emit) async {
       emit(ManipulateTweetLoading());
@@ -20,5 +19,5 @@ class ManipulateTweetBloc
     });
   }
 
-  ManipulateTweetRepository manipulateTweetRepository;
+  AddTweetRepository manipulateTweetRepository;
 }

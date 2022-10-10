@@ -5,7 +5,6 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 
 import 'package:bettertwitter/config/constants/db_names.dart';
 import 'package:bettertwitter/models/tweets/tweet_model.dart';
-import 'package:bettertwitter/models/user/user_model.dart';
 
 class HomeRepository {
   StreamController<List<TweetModel>> userStreamController =

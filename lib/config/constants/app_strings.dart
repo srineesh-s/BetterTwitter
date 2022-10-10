@@ -8,4 +8,5 @@ class AppStrings {
   static const String editTweet = "Edit Tweet";
   static const String addTweet = "Add Tweet";
   static const String yourTweets = "Your Tweets";
+  static const String signout = "Sign out";
 }

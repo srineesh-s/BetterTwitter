@@ -88,7 +88,7 @@ class _AuthenticationViewState extends State<AuthenticationView> {
                         noFunctionTap: false),
                     isSignup
                         ? InputField(
-                            fieldFocusNode: passwordFocusNode,
+                            fieldFocusNode: nameFocusNode,
                             placeholder: 'Choose a User Name',
                             controller: nameController,
                             textInputType: TextInputType.name,

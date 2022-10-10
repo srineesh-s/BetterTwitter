@@ -1,9 +1,19 @@
-# BetterTwitter [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-square)](http://makeapullrequest.com) <a href="https://github.com/Solido/awesome-flutter"><img alt="Awesome Flutter" src="https://img.shields.io/badge/Awesome-Flutter-blue.svg?longCache=true&style=flat-square" /></a>
-# bettertwitter
+# BetterTwitter [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-square)](http://makeapullrequest.com) <a href="https://github.com/Solido/awesome-flutter">
 
-A new Flutter project.
+A Simple Twitter project with posting,editing and delete functionalites built using flutter and firebase(2022).
 
-## Getting Started
+## Pre Requisites for running the application
+* Flutter v3.3.4
+* Any IDE with Flutter SDK installed (ie. IntelliJ, Android Studio, VSCode etc)
+* android studio installed
+* Android emulator or android device.
+
+## Commands to run the application
+# Flutter get command
+```
+$ echo hello
+hello
+```
 
 This project is a starting point for a Flutter application.
 

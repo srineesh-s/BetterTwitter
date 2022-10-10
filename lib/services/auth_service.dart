@@ -47,7 +47,7 @@ class AuthService {
       return user;
     } catch (e) {
       dev.log(e.toString());
-      throw AuthException("Authentication functionality has failed");
+      throw AuthException("Authentication failed");
     }
   }
 

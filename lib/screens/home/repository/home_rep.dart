@@ -1,23 +1,27 @@
+// ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'dart:async';
 
-import 'package:bettertwitter/config/constants/db_names.dart';
-import 'package:bettertwitter/models/user/user_model.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 
-class HomeRepository {
-  StreamController<List<UserModel>> userStreamController =
-      StreamController<List<UserModel>>();
+import 'package:bettertwitter/config/constants/db_names.dart';
+import 'package:bettertwitter/models/tweets/tweet_model.dart';
+import 'package:bettertwitter/models/user/user_model.dart';
 
-  late Stream<List<UserModel>> videoDataStream =
+class HomeRepository {
+  StreamController<List<TweetModel>> userStreamController =
+      StreamController<List<TweetModel>>();
+
+  late Stream<List<TweetModel>> videoDataStream =
       listenToTweetsRealTime().asBroadcastStream();
 
-  Stream<List<UserModel>> listenToTweetsRealTime() async* {
-    var tweetReference =
-        FirebaseFirestore.instance.collection(CollectionNames.users);
+  Stream<List<TweetModel>> listenToTweetsRealTime() async* {
+    var tweetReference = FirebaseFirestore.instance
+        .collection(CollectionNames.tweets)
+        .orderBy('date', descending: true);
     tweetReference.snapshots().listen((QuerySnapshot tweetsSnapshot) {
-      List<UserModel> order =
+      List<TweetModel> order =
           tweetsSnapshot.docs.map((DocumentSnapshot snapshot) {
-        return UserModel.fromJson(snapshot.data()! as Map<String, dynamic>);
+        return TweetModel.fromJson(snapshot.data()! as Map<String, dynamic>);
       }).toList();
       userStreamController.add(order);
       videoDataStream.asyncMap((event) => order);

@@ -26,3 +26,5 @@ class SignupEvent extends AuthenticationEvent {
       required this.password,
       required this.image});
 }
+
+class SignoutEvent extends AuthenticationEvent {}

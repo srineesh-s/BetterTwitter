@@ -14,7 +14,7 @@ class AuthenticationBloc
         await authRepository.login(event.email, event.password);
         emit(AuthenticationSuccess());
       } catch (e) {
-        emit(AuthenticationFailure(e.toString()));
+        emit(AuthenticationFailure("Authentication Failed"));
       }
     });
     on<SignupEvent>((event, emit) async {
@@ -29,6 +29,12 @@ class AuthenticationBloc
       } catch (e) {
         emit(AuthenticationFailure(e.toString()));
       }
+    });
+    on<SignoutEvent>((event, emit) async {
+      emit(AuthenticationLoading());
+      print("Sign out called");
+      await authRepository.signout();
+      emit(SignoutSuccess());
     });
   }
 

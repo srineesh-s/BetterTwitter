@@ -1,3 +1,4 @@
+import 'package:bettertwitter/models/tweets/tweet_model.dart';
 import 'package:bettertwitter/models/user/user_model.dart';
 import 'package:bettertwitter/screens/home/repository/home_rep.dart';
 import 'package:bloc/bloc.dart';
@@ -9,11 +10,11 @@ part 'home_event.dart';
 part 'home_state.dart';
 
 class HomeBloc extends Bloc<HomeEvent, TweetStream> {
-  HomeBloc(this.homeRepository) : super(TweetStream(users: [])) {
+  HomeBloc(this.homeRepository) : super(TweetStream(tweets: [])) {
     on<HomeStreamEvent>((event, emit) async {
       await emit.forEach(homeRepository.videoDataStream,
-          onData: ((List<UserModel> data) {
-        return TweetStream(users: data);
+          onData: ((List<TweetModel> data) {
+        return TweetStream(tweets: data);
       }));
     }, transformer: restartable());
   }

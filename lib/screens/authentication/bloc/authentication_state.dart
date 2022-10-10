@@ -18,3 +18,5 @@ class AuthenticationFailure extends AuthenticationState {
 
   const AuthenticationFailure(this.message);
 }
+
+class SignoutSuccess extends AuthenticationState {}

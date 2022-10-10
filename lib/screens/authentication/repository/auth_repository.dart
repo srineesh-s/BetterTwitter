@@ -41,4 +41,13 @@ class AuthRepository {
       rethrow;
     }
   }
+
+  Future<bool> signout() async {
+    try {
+      await authService.signOut();
+      return true;
+    } catch (e) {
+      rethrow;
+    }
+  }
 }

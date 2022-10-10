@@ -2,8 +2,8 @@
 part of 'home_bloc.dart';
 
 class TweetStream {
-  List<UserModel> users;
+  List<TweetModel> tweets;
   TweetStream({
-    required this.users,
+    required this.tweets,
   });
 }

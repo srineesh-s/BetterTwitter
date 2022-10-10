@@ -1,4 +1,3 @@
-import 'package:bettertwitter/models/tweets/tweet_model.dart';
 import 'package:bettertwitter/screens/user_tweets/bloc/user_tweet_bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -13,7 +12,7 @@ class UserTweetView extends StatefulWidget {
 class _UserTweetViewState extends State<UserTweetView> {
   @override
   void initState() {
-    context.read<UserTweetBloc>().add(GetUserTweetsEvent(userId: ''));
+    context.read<UserTweetBloc>().add(GetUserTweetsEvent());
     super.initState();
   }
 
@@ -55,10 +54,10 @@ class _UserTweetViewState extends State<UserTweetView> {
                 : ListView.builder(
                     itemCount: state.tweets.length,
                     itemBuilder: (context, index) {
-                      print(state.tweets.length);
-
                       return ListTile(
                         title: Text(state.tweets[index].tweet),
+                        subtitle:
+                            Text(state.tweets[index].date.substring(0, 10)),
                         trailing: IconButton(
                           onPressed: () {
                             context.read<UserTweetBloc>().add(

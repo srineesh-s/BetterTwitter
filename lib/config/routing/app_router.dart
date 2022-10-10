@@ -40,9 +40,7 @@ Route<dynamic> generateRoute(RouteSettings settings) {
                         dbService:
                             DbService(firestore: FirebaseFirestore.instance),
                         authService: AuthService(auth: FirebaseAuth.instance))),
-                child: ManipulateTweetView(
-                  tweetModel: arguments as TweetModel?,
-                ),
+                child: ManipulateTweetView(),
               ));
     case RouteNames.userTweets:
       // final userTweet = settings.arguments as TweetModel;

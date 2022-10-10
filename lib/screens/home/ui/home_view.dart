@@ -90,6 +90,11 @@ Widget tweetWidget(TweetModel tweetModel) {
     onTap: () {},
     child: Container(
       margin: const EdgeInsets.all(10),
+      padding: const EdgeInsets.all(10),
+      decoration: BoxDecoration(
+          color: Colors.white,
+          borderRadius: BorderRadius.circular(12.00),
+          border: Border.all(color: Colors.blueGrey)),
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.center,
         mainAxisAlignment: MainAxisAlignment.start,
@@ -110,16 +115,22 @@ Widget tweetWidget(TweetModel tweetModel) {
               Text(
                 "@${tweetModel.user.name}",
                 style:
-                    const TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
+                    const TextStyle(fontWeight: FontWeight.bold, fontSize: 17),
               ),
               const SizedBox(
                 height: 2,
               ),
-              Text(tweetModel.date),
+              Text(tweetModel.date.substring(0, 10)),
               const SizedBox(
                 height: 5,
               ),
-              Text(tweetModel.tweet),
+              Text(
+                tweetModel.tweet,
+                style: const TextStyle(
+                    fontWeight: FontWeight.w500,
+                    fontSize: 17,
+                    color: Colors.grey),
+              ),
             ],
           ),
           const Spacer(),

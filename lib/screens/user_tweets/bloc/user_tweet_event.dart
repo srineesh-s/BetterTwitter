@@ -7,11 +7,7 @@ abstract class UserTweetEvent extends Equatable {
   List<Object> get props => [];
 }
 
-class GetUserTweetsEvent extends UserTweetEvent {
-  final String userId;
-
-  const GetUserTweetsEvent({required this.userId});
-}
+class GetUserTweetsEvent extends UserTweetEvent {}
 
 class DeleteUserTweetEvent extends UserTweetEvent {
   final TweetModel tweetModel;

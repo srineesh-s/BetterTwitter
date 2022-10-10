@@ -16,8 +16,12 @@ class AddTweetView extends StatelessWidget {
       ),
       body: BlocConsumer<AddTweetBloc, AddTweetState>(
         listener: (context, state) {
-          if (state is ManipulateTweetSuccess) {
+          if (state is AddTweetSuccess) {
             tweetController.clear();
+            Navigator.of(context).pop();
+          } else if (state is AddTweetFailure) {
+            ScaffoldMessenger.of(context)
+                .showSnackBar(SnackBar(content: Text("Something went wrong")));
             Navigator.of(context).pop();
           }
         },
@@ -46,7 +50,7 @@ class AddTweetView extends StatelessWidget {
                 maxLines: null,
                 autocorrect: false,
               ),
-              (state is ManipulateTweetLoading)
+              (state is AddTweetLoading)
                   ? const CircularProgressIndicator()
                   : TextButton(
                       onPressed: () async {

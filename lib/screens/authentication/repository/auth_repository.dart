@@ -34,7 +34,7 @@ class AuthRepository {
             email: email,
             image: 1.toString(),
             name: name,
-            userId: user!.uid,
+            userId: user != null ? user.uid : "",
           ).toJson());
       return true;
     } catch (e) {

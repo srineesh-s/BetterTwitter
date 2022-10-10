@@ -112,14 +112,6 @@ class MockAuthService extends _i1.Mock implements _i4.AuthService {
         returnValue: _i6.Future<_i2.User?>.value(),
       ) as _i6.Future<_i2.User?>);
   @override
-  _i6.Future<bool> isUserLoggedIn() => (super.noSuchMethod(
-        Invocation.method(
-          #isUserLoggedIn,
-          [],
-        ),
-        returnValue: _i6.Future<bool>.value(false),
-      ) as _i6.Future<bool>);
-  @override
   _i6.Future<_i2.User?> signUpWithEmailAndPassword(
     String? email,
     String? password,
@@ -215,6 +207,14 @@ class MockAuthRepository extends _i1.Mock implements _i7.AuthRepository {
             password,
             name,
           ],
+        ),
+        returnValue: _i6.Future<bool>.value(false),
+      ) as _i6.Future<bool>);
+  @override
+  _i6.Future<bool> signout() => (super.noSuchMethod(
+        Invocation.method(
+          #signout,
+          [],
         ),
         returnValue: _i6.Future<bool>.value(false),
       ) as _i6.Future<bool>);

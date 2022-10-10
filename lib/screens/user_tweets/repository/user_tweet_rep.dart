@@ -11,8 +11,6 @@ class UserTweetRepository {
 
   Future<List<TweetModel>> getUserTweets() async {
     try {
-      print("--------");
-      print(authService.userFromFirebaseUser.userId);
       List<TweetModel> tweets = [];
       var data = await dbService.getDataFromCollection(
           collectionName: CollectionNames.tweets,
@@ -20,7 +18,6 @@ class UserTweetRepository {
       data.docs.map((snapshot) => snapshot.data()).forEach((element) {
         tweets.add(TweetModel.fromJson(element as Map<String, dynamic>));
       });
-      print(tweets.length);
       return tweets;
     } catch (e) {
       rethrow;

@@ -1,13 +1,10 @@
 import 'package:bettertwitter/config/routing/route_names.dart';
 import 'package:bettertwitter/main.dart';
-import 'package:bettertwitter/models/tweets/tweet_model.dart';
 import 'package:bettertwitter/screens/authentication/ui/auth_view.dart';
-import 'package:bettertwitter/screens/home/bloc/home_bloc.dart';
-import 'package:bettertwitter/screens/home/repository/home_rep.dart';
 import 'package:bettertwitter/screens/home/ui/home_view.dart';
 import 'package:bettertwitter/screens/add_tweet/bloc/add_tweet_bloc.dart';
 import 'package:bettertwitter/screens/add_tweet/repository/add_tweet_repository.dart';
-import 'package:bettertwitter/screens/add_tweet/ui/manipulate_tweet_view.dart';
+import 'package:bettertwitter/screens/add_tweet/ui/add_tweet_view.dart';
 import 'package:bettertwitter/screens/user_tweets/bloc/user_tweet_bloc.dart';
 import 'package:bettertwitter/screens/user_tweets/repository/user_tweet_rep.dart';
 import 'package:bettertwitter/screens/user_tweets/ui/user_tweet_view.dart';

@@ -83,4 +83,17 @@ void main() {
       AuthenticationFailure(""),
     ],
   );
+  blocTest<AuthenticationBloc, AuthenticationState>(
+    'Checking the Signout state',
+    build: () {
+      when(mockAuthRepository.signout())
+          .thenAnswer((realInvocation) async => true);
+      return AuthenticationBloc(mockAuthRepository);
+    },
+    act: ((bloc) => bloc.add(SignoutEvent())),
+    expect: () => <AuthenticationState>[
+      AuthenticationLoading(),
+      SignoutSuccess(),
+    ],
+  );
 }

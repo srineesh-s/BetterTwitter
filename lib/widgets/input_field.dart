@@ -75,17 +75,6 @@ class _InputFieldState extends State<InputField> {
                   focusNode: widget.fieldFocusNode,
                   textInputAction: widget.textInputAction,
                   onChanged: widget.onChanged,
-                  onEditingComplete: () {
-                    if (widget.enterPressed != null) {
-                      FocusScope.of(context).requestFocus(FocusNode());
-                      widget.enterPressed!();
-                    }
-                  },
-                  onFieldSubmitted: (value) {
-                    if (widget.nextFocusNode != null) {
-                      widget.nextFocusNode?.requestFocus();
-                    }
-                  },
                   obscureText: isPassword,
                   readOnly: widget.isReadOnly,
                   decoration: InputDecoration.collapsed(
@@ -93,28 +82,18 @@ class _InputFieldState extends State<InputField> {
                   ),
                 ),
               ),
-              GestureDetector(
-                onTap: () {
-                  widget.noFunctionTap
-                      ? null
-                      : setState(() {
-                          isPassword = !isPassword;
-                        });
-                },
-                child: widget.password
-                    ? Container(
-                        width: fieldHeight,
-                        height: fieldHeight,
-                        alignment: Alignment.center,
-                        child: Icon(isPassword
-                            ? Icons.visibility
-                            : Icons.visibility_off))
-                    : Container(
-                        width: fieldHeight,
-                        height: fieldHeight,
-                        alignment: Alignment.center,
-                        child: const Icon(Icons.perm_identity)),
-              ),
+              widget.password
+                  ? Container(
+                      width: fieldHeight,
+                      height: fieldHeight,
+                      alignment: Alignment.center,
+                      child: Icon(
+                          isPassword ? Icons.visibility : Icons.visibility_off))
+                  : Container(
+                      width: fieldHeight,
+                      height: fieldHeight,
+                      alignment: Alignment.center,
+                      child: const Icon(Icons.perm_identity)),
             ],
           ),
         ),
